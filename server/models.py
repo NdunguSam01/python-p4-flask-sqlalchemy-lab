@@ -20,8 +20,8 @@ class Enclosure(db.Model):
     __tablename__ = 'enclosures'
 
     id = db.Column(db.Integer, primary_key=True)
-    environment=db.Column(db.String, nullable=False)
-    open_to_visitors=db.Column(db.Enum("True", "False"), nullable=False)
+    environment = db.Column(db.String, nullable=False)
+    open_to_visitors = db.Column(db.Enum("True", "False"), nullable=False)
 
 class Animal(db.Model):
     __tablename__ = 'animals'
