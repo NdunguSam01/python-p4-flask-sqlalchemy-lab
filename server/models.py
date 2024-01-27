@@ -23,6 +23,8 @@ class Enclosure(db.Model):
     environment = db.Column(db.String, nullable=False)
     open_to_visitors = db.Column(db.Enum("True", "False"), nullable=False)
 
+    animals=db.relationship("Animal", backref="enclosure")
+
 class Animal(db.Model):
     __tablename__ = 'animals'
 
@@ -30,3 +32,4 @@ class Animal(db.Model):
     name=db.Column(db.String)
     species = db.Column(db.String)
     zookeeper_id=db.Column(db.Integer, db.ForeignKey("zookeepers.id"))
+    enclosure_id=db.Column(db.Integer, db.ForeignKey("enclosures.id"))

@@ -1,8 +1,8 @@
-"""Add environment column to enclosures table
+"""Created the models
 
-Revision ID: 7ad7b4ad2e9b
+Revision ID: b1269ae2e5b0
 Revises: 
-Create Date: 2024-01-27 10:12:19.244023
+Create Date: 2024-01-27 10:22:24.610575
 
 """
 from alembic import op
@@ -10,7 +10,7 @@ import sqlalchemy as sa
 
 
 # revision identifiers, used by Alembic.
-revision = '7ad7b4ad2e9b'
+revision = 'b1269ae2e5b0'
 down_revision = None
 branch_labels = None
 depends_on = None
@@ -35,6 +35,8 @@ def upgrade():
     sa.Column('name', sa.String(), nullable=True),
     sa.Column('species', sa.String(), nullable=True),
     sa.Column('zookeeper_id', sa.Integer(), nullable=True),
+    sa.Column('enclosure_id', sa.Integer(), nullable=True),
+    sa.ForeignKeyConstraint(['enclosure_id'], ['enclosures.id'], name=op.f('fk_animals_enclosure_id_enclosures')),
     sa.ForeignKeyConstraint(['zookeeper_id'], ['zookeepers.id'], name=op.f('fk_animals_zookeeper_id_zookeepers')),
     sa.PrimaryKeyConstraint('id')
     )

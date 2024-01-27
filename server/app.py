@@ -19,7 +19,14 @@ def home():
 
 @app.route('/animal/<int:id>')
 def animal_by_id(id):
-    return ''
+    animal=Animal.query.filter(Animal.id == id).first()
+    return f'''
+    <ul>
+        <li>ID: {animal.id}</li>
+        <li>Name: {animal.name}</li>
+        <li>Species: {animal.species}</li>
+        <li.Zookeeper: {animal.zookeeper}</li>
+    '''
 
 @app.route('/zookeeper/<int:id>')
 def zookeeper_by_id(id):
